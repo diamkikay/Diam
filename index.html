@@ -13,21 +13,21 @@
     /* 1. PALETA TEMÁTICA: Bosque Oscuro / Neón Suave */
     /* ------------------------------------- */
     :root {
-        --bg-dark: #021415; 
-        --panel: rgba(20, 40, 45, 0.75); 
-        --text: #e0fff9; 
+        --bg-dark: #021415; /* Verde azulado muy oscuro (bosque/noche) */
+        --panel: rgba(20, 40, 45, 0.75); /* Panel translúcido azul verdoso */
+        --text: #e0fff9; /* Blanco cristalino */
         --radius: 12px;
         
         /* Colores Neón Específicos */
         --neon-green: #00ff88;  
         --neon-blue: #00ccff;   
-        --neon-gold: #ffd700;   
+        --neon-gold: #ffd700;   /* Navidad Suave / Premium */
         --neon-purple: #d400ff; 
         --neon-red: #ff3333;    
 
         /* Gradiente RGB base para animación (suave) */
         --rgb-gradient: linear-gradient(90deg, #d83d47, #ff9800, #4caf50, #00bcd4, #3f51b5, #9c27b0, #d83d47); 
-        --rgb-speed: 15s; 
+        --rgb-speed: 15s; /* CLAVE: Velocidad de animación más lenta y suave */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -109,13 +109,18 @@
     }
     @keyframes borderGlow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     
+    /* CSS Responsivo para el video (se mantiene) */
     .video-container {
         position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
         border-radius: calc(var(--radius) - 2px); background: #000;
         border: 1px solid rgba(255, 255, 255, 0.1); 
         backdrop-filter: blur(10px);
     }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .video-container iframe { 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+        /* Propiedad clave para que el CSS responsivo funcione */
+        border: 0; 
+    }
 
     /* ------------------------------------- */
     /* 4. GRID DE BOTONES COMPACTOS RGB SUAVE */
@@ -245,9 +250,10 @@
       <div class="video-wrapper">
           <div class="video-container">
             <iframe 
-                src="https://www.youtube.com/embed/VIDEO_ID?controls=1" 
+                src="https://www.youtube.com/embed/errrWbTrXkI?si=k25arF3japR_R1fk" 
+                title="YouTube video player" 
                 frameborder="0" 
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
             </iframe>
           </div>
@@ -304,12 +310,11 @@
   </div>
   
   <script>
-    // Este script mantiene el efecto de "Confianza/Tecnología" para la aparición suave del video.
+    // Script de aparición suave del video (efecto tecnológico)
     window.addEventListener('load', () => {
         console.log('Sistema Diam K inicializado: Conexión segura establecida.');
         
         const videoWrapper = document.querySelector('.video-wrapper');
-        // El video ya está oculto por CSS (opacity: 0), ahora lo mostramos
         setTimeout(() => {
             videoWrapper.style.transition = 'opacity 1s ease-out';
             videoWrapper.style.opacity = '1';
